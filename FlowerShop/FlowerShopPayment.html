@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/FlowerShopScripts.js">
+    </script>
+    <link  rel="stylesheet"href="Styles/FlowerShopStyles.css" />
+    <script type="text/javascript">window.onload = function () {
+            var ddlYears = document.getElementById("ddlYears");
+            var currentYear = (new Date()).getFullYear();
+            for (var i = currentYear; i <= currentYear+20; i++) {
+                var option = document.createElement("OPTION");
+                option.innerHTML = i;
+                option.value = i;
+                ddlYears.appendChild(option);
+            }
+            var ddlMonths = document.getElementById("ddlMonths");
+            for (var i = 1; i <=12; i++) {
+                var option = document.createElement("OPTION");
+                option.innerHTML = i;
+                option.value = i;
+                ddlMonths.appendChild(option);
+            }
+        };
+    </script>
+</head>
+<body>
+    <form  id="payment" >
+        <h2> &nbsp &nbsp FLOWER SHOP ONLINE</h2>
+        <div class="line"></div>
+        <section>
+            <div class="right">
+                <img src="images/flower.png" alt="flower" />
+            </div>
+            <div class="left">
+                <div>
+                    <h2 class="headline2">Secure Payment Page</h2>
+                    <table>
+                        <tr>
+                            <td class="td ">
+                                <b>Select Language</b>
+                            </td>
+                            <td class="td ">
+                                <select class="select">
+                                    <option class="option" value="English">English</option>
+                                    <option value="French">French</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a>Payment Method</a>
+                            </td>
+                            <td>
+                                <b>Visa</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a>Description</a>
+                            </td>
+                            <td>
+                                <b>Item ordered</b>
+                            </td>
+                            <td rowspan="2" class="td">
+                                <img class="visasize" src="images/Visa.png" alt="visa"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a>Amount</a>
+                            </td>
+                            <td>
+                                <b>£100.00 </b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <div class="details">
+                    <a>Card details</a>
+                </div>
+                <div class="detailsbody">
+                    <a>You must fill in fields marked with*</a>
+                    <table class="tbtablestyle">
+                        <tr>
+                            <td>* Card number</td>
+                            <td><input type="text" size="40" maxlength="16" id="card" onchange="cardvalidation()" placeholder="Enter Card Number" required/>
+                                <span id="ValidCard">
+                                    *Starts with 4 and 16 digits should be there.
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>* Security code</td>
+                            <td><input type="text" size="10" maxlength="3" id="securitycode" onchange="validateSecurityCode()" placeholder="Enter Security Cade" required/>
+                                <span id="ValidSecurity" style="display:none">
+                                    *size of 3 digit
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>* Expiry date</td>
+                            <td>
+                                <select id="ddlMonths" required="required"></select>
+                                &nbsp
+                                <select id="ddlYears"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>* Cardholder's name</td>
+                            <td><input type="text" maxlength="20" id="name" onchange="validateName()" placeholder="Enter Cardholder Name" required/>
+                                <span id="ValidName" style="display:none">
+                                    *less then 40 character
+
+                                </span>
+                            </td>
+                        </tr>
+
+                     </table>
+                </div>
+                <div class="details">
+                    <a>Cardholder details</a>
+                </div>
+                <div class="detailsbody">
+                    <a>You must fill in fields marked with*</a>
+                    <table>
+                        <tr>
+                            <td>* Address 1</td>
+                            <td><input type="text" size="40" maxlength="30" id="address" onchange="validateAddress()" placeholder="Enter Address" required/>
+                                <span id="ValidAddress" style="display:none">
+                                    * Enter valid Address
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp&nbsp Address 2</td>
+                            <td><input type="text" size="40" maxlength="30" placeholder="Enter Address"/></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp&nbsp Address 3</td>
+                            <td><input type="text" size="40" maxlength="30" placeholder="Enter Address" /></td>
+                        </tr>
+                        <tr>
+                            <td>* Town/City</td>
+                            <td><input type="text" size="40" id="city" onchange="validateCity()" placeholder="Enter Town or City" required="required" />
+                                <span id="ValidCity" style="display:none">
+                                    * Enter valid Town Or City
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp&nbsp Region</td>
+                            <td><input type="text" size="40" maxlength="15" id="region" onchange="validateRegion()" placeholder="Enter Region"/>
+                                <span id="Validregion" style="display:none">
+                                    * Enter valid region
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>* Postcode/Zip code</td>
+                            <td><input type="text" id="zip" maxlength="6" onchange="validateZipCode()" placeholder="Enter Zip Code" required="required" />
+                                <span id="ValidZip" style="display:none">
+                                    * starts with 6 and 6 digits
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>* Country</td>
+                            <td>
+                                <select>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="India">India</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp&nbsp telephone</td>
+                            <td><input type="text" id="telephone" maxlength="10" onchange="validatePhoneNo()" placeholder="Enter Telephone" />
+                                <span id="Validphone" style="display:none">
+                                    Enter valid telephone number
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp&nbsp Fax</td>
+                            <td><input type="text" id="fax" maxlength="6" onchange="validateFax()" placeholder="Enter Fax" />
+                                <span id="ValidFax" style="display:none">
+                                    Enter valid Fax number(6 digits)
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>  
+                            <td>* Email address</td>
+                            <td><input type="text" size="40" id="mail" placeholder="Enter Email Address" onchange="validateEmail()" required="required" />
+                                <span id="ValidMail" style="display:none">
+                                    * Enter valid Email(Eg:abc@gmail.com)
+
+                                </span>
+                            </td>
+                        </tr>
+                        <tr></tr>
+                    </table>
+                </div>
+                <div>
+                    <a class="decoration" href="FlowerShopPayment.html"><img class="icon" src="images/Refresh.png" alt="Refresh" /> START AGAIN</a>
+                    <a class="makepayment"  onclick="submitOperation()"> MAKE PAYMENT <img class="icon2" src="images/makepayment.png" alt="makepayment"/></a>
+                    <br />
+                    <a class="decoration" href="FlowerShopPayment.html" onclick="cancelOperation()"><img class="icon" src="images/cancel.png" alt="cancel"/> CANCEL</a>
+                </div>
+                <h3>Refunds and Return</h3>
+                <h5>For more information visit our <a href="Refund abd Returns policy">Refund abd Returns policy</a></h5>
+                <p>
+                    <img src="images/pay.png" alt="pay"/>For help with your payment visit our <a href="WorldPay Help">WorldPay Help</a>
+                </p>
+            </div>
+            <div class="end">
+                <a><img class="question1" src="images/question.png" alt="question"/></a>
+                <img class="question2" src="images/question.png" alt="question"/>
+            </div>
+        </section>
+        <div class="line"> Thank you for shoping at Flowershop. Have a nice day</div>
+    </form>
+</body>
+</html>
